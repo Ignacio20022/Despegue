@@ -8,7 +8,7 @@ import axios from 'axios'
 import dotenv from 'dotenv'
 dotenv.config()
 
-axios.defaults.baseURL = "https://despegue.herokuapp.com" ;
+axios.defaults.baseURL = "https://despegue.onrender.com" ;
 
 ReactDOM.render(
   <Provider store={store}>

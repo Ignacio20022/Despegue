@@ -24,29 +24,45 @@ require("./routes/login/passportConfig");
 //     })
 // );
 
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'https://despegue.vercel.app'); // update to match the domain you will make the request from
-    res.header('Access-Control-Allow-Credentials', 'true');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-    next();
-  });
+// app.use((req, res, next) => {
+//     res.header('Access-Control-Allow-Origin', 'https://despegue.vercel.app'); // update to match the domain you will make the request from
+//     res.header('Access-Control-Allow-Credentials', 'true');
+//     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+//     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+//     next();
+//   });
 
-app.use(
-    cookieSession({
-        name: "session",
-        keys: ["secretcode"],
-        maxAge: 24 * 60 * 60 * 100,
-    })
-);
 
+app.use(cors())
+app.use(bodyParser.json({ limit: "50mb" }));
 app.use(cookieParser("secretcode"));
+app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
+
+app.use(session({
+    secret: 'despegue',
+    resave: false,
+    saveUninitialized: true,
+}));
+
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
-app.use(bodyParser.json({ limit: "50mb" }));
 app.use(morgan("dev"));
+
+
+// app.use(express.static(__dirname + '/../dist'))
+
+// app.use(
+//     cookieSession({
+//         name: "session",
+//         keys: ["secretcode"],
+//         maxAge: 24 * 60 * 60 * 100,
+//     })
+// );
+
+
+
+
 
 
 

@@ -21,12 +21,11 @@ function App() {
     const dispatch = useDispatch()
   useEffect(() => {
     const getUser = () => {
-      fetch("https://despegue.herokuapp.com/auth/login/success", {
+      fetch("https://despegue.onrender.com/auth/login/success", {
         method: "GET",
         credentials: "include",
         headers: {
           Accept: "application/json",
-          "Access-Control-Allow-Origin": "https://despegue.vercel.app",
           "Content-Type": "application/json",
           "Access-Control-Allow-Credentials": true,
         },
