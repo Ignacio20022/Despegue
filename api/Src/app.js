@@ -35,7 +35,7 @@ require("./routes/login/passportConfig");
 
 app.use(cors())
 app.use(bodyParser.json({ limit: "50mb" }));
-app.use(cookieParser("secretcode"));
+app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 
 app.use(session({

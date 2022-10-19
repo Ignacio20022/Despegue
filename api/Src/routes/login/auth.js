@@ -29,13 +29,17 @@ router.get("/logout", (req, res) => {
   res.redirect(CLIENT_URL);
 });
 
-router.get("/google", passport.authenticate("google", { scope: ["profile",'email'] }));
+router.get("/google", passport.authenticate("google",),(req, res) => {
+    console.log(err, 'not called');
+})
 
 router.get(
   "/google/callback",
   passport.authenticate("google", { failureRedirect: "/login/failed" }), 
   (req, res) => {
-      res.redirect(CLIENT_URL)
+    console.log('red');
+    console.log(req);
+    res.redirect('/')
     }
 )
 

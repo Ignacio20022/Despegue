@@ -2,6 +2,7 @@ const User = require("../../../models/user");
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcrypt");
 const passport = require("passport");
+const { token } = require("morgan");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const FacebookStrategy = require("passport-facebook").Strategy;
 
@@ -18,33 +19,11 @@ passport.use(
       clientID: GOOGLE_CLIENT_ID,
       clientSecret: GOOGLE_CLIENT_SECRET,
       callbackURL: "https://despegue.onrender.com/auth/google/callback",
+      scope: ['r_emailaddress', 'r_basicprofile'],
+      state: true
     },
-    function (accessToken, refreshToken, profile, done) {
-      // Busco en la DB si el usuario existe
-      User.findOne({ googleId: profile.id }).then((resp) => {
-        if (resp) {
-          console.log(resp)
-          done(null, resp);
-        } else {
-          // Si no existe lo agrego a la DB
-          new User({
-            name: profile.displayName,
-            firstName: profile.name.givenName,
-            lastname: profile.name.familyName,
-            photo: profile.photos[0].value,
-            googleId: profile.id,
-            password: "1",
-            email: profile.emails[0].value,
-            dni: '',
-            phone: '',
-            birthDate: ''
-          })
-            .save()
-            .then((newUser) => {
-              done(null, newUser);
-            });
-        }
-      });
+    (token, tokenSecret, profile, done) => {
+        console.log(token, tokenSecret, profile, done);
     }
   )
 );
@@ -85,7 +64,6 @@ passport.use(
 );
 
 passport.serializeUser((user, done) => {
-  console.log(user);
   done(null, user);
 });
 
