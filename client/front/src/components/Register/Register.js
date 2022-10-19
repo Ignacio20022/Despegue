@@ -79,7 +79,7 @@ const Register = ({user}) => {
                     resetForm();
                     cambiarFormularioEnviado(true);
                     setTimeout(() => cambiarFormularioEnviado(false), 5000);
-                    register(valores)
+                    // register(valores)
                 }}
             >
                 {({ errors }) => (
