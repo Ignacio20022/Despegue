@@ -22,22 +22,22 @@ const Register = ({user}) => {
         window.open("https://despegue.herokuapp.com/auth/google", "_self");
     };
 
-    const register = (valores) => {
-       axios({
-      method: "POST",
-      data: valores,
-    //   withCredentials: true,
-      url: "/register",
-    })
-      .then((res) => {
-        alert(res.data);
-        history.push("/login");
-      })
-      .catch((err) => {
-        alert(err.response.data);
-        console.log(err);
-      });
-    }
+    // const register = (valores) => {
+    //    axios({
+    //   method: "POST",
+    //   data: valores,
+    // //   withCredentials: true,
+    //   url: "/register",
+    // })
+    //   .then((res) => {
+    //     alert(res.data);
+    //     history.push("/login");
+    //   })
+    //   .catch((err) => {
+    //     alert(err.response.data);
+    //     console.log(err);
+    //   });
+    // }
 
     return (
         <>

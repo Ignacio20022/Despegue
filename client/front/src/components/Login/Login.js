@@ -25,16 +25,16 @@ const Login = () => {
     window.open("https://despegue.herokuapp.com/auth/google", "_self");
   };
 
-  function login(valores){
-    axios({
-      method: "POST",
-      data: valores,
-    //   withCredentials: true,
-      url: "/login",
-    }).then((res) => {
-      window.location.reload()
-    });
-  }
+//   function login(valores){
+//     axios({
+//       method: "POST",
+//       data: valores,
+//     //   withCredentials: true,
+//       url: "/login",
+//     }).then((res) => {
+//       window.location.reload()
+//     });
+//   }
 
 
   return (
