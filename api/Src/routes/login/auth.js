@@ -39,7 +39,7 @@ router.get(
   (req, res) => {
     console.log('red');
     console.log(req);
-    res.redirect('/')
+    res.send(req)
     }
 )
 

@@ -22,7 +22,7 @@ const Login = () => {
 
 
   const google = () => {
-    window.open("https://despegue.onrender.com/auth/google", "_self");
+    window.open("https://despegue.herokuapp.com/auth/google", "_self");
   };
 
   function login(valores){

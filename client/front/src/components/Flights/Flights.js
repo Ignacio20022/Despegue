@@ -18,7 +18,7 @@ function Flights() {
     flights = infofiltrada;
   }
   const logout = () => {
-    window.open("https://despegue.onrender.com/auth/logout", "_self");
+    window.open("https://despegue.herokuapp.com/auth/logout", "_self");
   };
   console.log(flights,'--', allFlights)
   const [orden, setOrden] = useState('')

@@ -21,16 +21,9 @@ function App() {
     const dispatch = useDispatch()
   useEffect(() => {
     const getUser = () => {
-      fetch("https://despegue.onrender.com/auth/login/success", {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Credentials": true,
-        },
-      })
+      fetch("https://despegue.herokuapp.com/auth/google/callback")
         .then((response) => {
+            console.log(response);
           if (response.status === 200) return response.json();
           throw new Error("authentication has been failed!");
         })

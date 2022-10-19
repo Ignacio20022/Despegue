@@ -16,7 +16,7 @@ export default function NavBar() {
   const user = useSelector((state) => state.user);
 
   function handleSubmitLogOut() {
-    window.open("https://despegue.onrender.com/auth/logout", "_self");
+    window.open("https://despegue.herokuapp.com/auth/logout", "_self");
     alert("Cerrando sesion");
   }
 
