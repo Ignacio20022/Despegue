@@ -19,7 +19,7 @@ passport.use(
       clientID: GOOGLE_CLIENT_ID,
       clientSecret: GOOGLE_CLIENT_SECRET,
       callbackURL: "https://despegue.herokuapp.com/auth/google/callback",
-      scope: ['r_emailaddress', 'r_basicprofile'],
+      scope: ['email', 'profile'],
       state: true
     },
     (token, tokenSecret, profile, done) => {
