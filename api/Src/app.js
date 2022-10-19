@@ -33,7 +33,12 @@ require("./routes/login/passportConfig");
 //   });
 
 
-app.use(cors())
+app.use(
+    cors({
+      origin: "*", // <-- location of the react app were connecting to
+      methods: "GET,POST,PUT,DELETE",
+    })
+  );
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
