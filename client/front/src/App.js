@@ -14,41 +14,54 @@ import CardDetail from "./components/CardDetail/cardDetail";
 import  MiPerfil  from "./components/MiPerfil/MiPerfil";
 import { useDispatch } from "react-redux";
 import { storeUserInfo } from "./Redux/Actions";
-import axios from "axios";
+
+import { useState } from "react";
 
 function App() {
     const dispatch = useDispatch()
-    useEffect(() => {
-        const getUser = () => {
-            axios.get('/auth/login/success')
-            .then((response) => {
-              if (response.status === 200) return response.data;
-              throw new Error("authentication has been failed!");
-            })
-            .then((resObject) => {
-                console.log(resObject);
-              const obj = {
-                name: resObject.user.displayName
-                  ? resObject.user.displayName
-                  : resObject.user.name,
-                photos: resObject.user.photos ? resObject.user.photos[0].value : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1200px-User-avatar.svg.png",
-                firstName: resObject.user.name.givenName
-                  ? resObject.user.name.givenName
-                  : resObject.user.name,
-              };
-              dispatch(storeUserInfo(obj))
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-        };
-        getUser();
-      }, [dispatch]);
+  useEffect(() => {
+    const getUser = () => {
+      fetch("http://localhost:3001/auth/login/success", {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Credentials": true,
+        },
+      })
+        .then((response) => {
+          if (response.status === 200) return response.json();
+          throw new Error("authentication has been failed!");
+        })
+        .then((resObject) => {
+          console.log(resObject)
+          const obj = {
+            name: resObject.user.displayName
+              ? resObject.user.displayName
+              : resObject.user.name,
+            photos: resObject.user.photo ? resObject.user.photo : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1200px-User-avatar.svg.png",
+            firstName: resObject.user.firstName,
+            lastname: resObject.user.lastname,
+            email: resObject.user.email,
+            id: resObject.user._id,
+            dni: resObject.user.dni,
+            phone: resObject.user.phone,
+            birthDate: resObject.user.birthDate
+          };
+          dispatch(storeUserInfo(obj))
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    getUser();
+  }, [dispatch]);
 
   return (
     <div className="App">
       <BrowserRouter>
-        <Route path={"/"} render={() => <NavBar />} />
+        <Route path={"/"} render={() => <NavBar/>} />
         <Route exact path="/" component={Home} />
         <Route exact path="/login" render={() => <Login />} />
         <Route path="/user" render={() => <MiPerfil/>} />
