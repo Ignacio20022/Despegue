@@ -26,6 +26,7 @@ function App() {
         credentials: "include",
         headers: {
           Accept: "application/json",
+          "Access-Control-Allow-Origin": "https://despegue.vercel.app",
           "Content-Type": "application/json",
           "Access-Control-Allow-Credentials": true,
         },
