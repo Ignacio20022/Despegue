@@ -21,7 +21,7 @@ function App() {
     const dispatch = useDispatch()
   useEffect(() => {
     const getUser = () => {
-      fetch("https://despegue.herokuapp.com/auth/google/callback")
+      fetch("https://despegue.herokuapp.com/auth/google/redirect")
         .then((response) => {
             console.log(response);
           if (response.status === 200) return response.json();

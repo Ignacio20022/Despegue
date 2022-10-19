@@ -109,7 +109,10 @@ const Login = () => {
               </div>
 
               <button type="submit">Iniciar Sesion</button>
-              <button onClick={google} type="button" className="Login-ButtonGoogle"><img src={Google} alt="google"/>Iniciar Sesion con google</button>
+              <a href="https://despegue.herokuapp.com/auth/google">
+
+              <button type="button" className="Login-ButtonGoogle"><img src={Google} alt="google"/>Iniciar Sesion con google</button>
+              </a>
 
               {formularioEnviado && <p className="exito">Formulario enviado con exito!</p>}
               <div className="Login-containerRegister">
