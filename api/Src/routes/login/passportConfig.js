@@ -24,6 +24,7 @@ passport.use(
     },
     (token, tokenSecret, profile, done) => {
         console.log(token, tokenSecret, profile, done);
+        done(null, profile)
     }
   )
 );
