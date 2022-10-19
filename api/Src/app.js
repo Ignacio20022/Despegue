@@ -87,6 +87,7 @@ app.get('/auth/google', passport.authenticate('google',{
 }))
 
 app.get('/auth/google/redirect', passport.authenticate('google'), function(req,res){
+    console.log(req.user);
     res.send(req.user)
 })
  
