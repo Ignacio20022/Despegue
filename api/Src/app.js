@@ -9,6 +9,7 @@ const passportLocal = require("passport-local").Strategy;
 const cors = require("cors");
 const passport = require("passport");
 require("dotenv").config();
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const { URI, USER, PASSWORD } = process.env;
 
 const app = express();
@@ -32,28 +33,69 @@ require("./routes/login/passportConfig");
 //     next();
 //   });
 
-
 app.use(
     cors({
-      origin: "*", // <-- location of the react app were connecting to
-      methods: "GET,POST,PUT,DELETE",
+        origin: "*", // <-- location of the react app were connecting to
+        methods: "GET,POST,PUT,DELETE",
     })
-  );
-app.use(bodyParser.json({ limit: "50mb" }));
-app.use(cookieParser());
-app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
+);
 
-app.use(session({
-    secret: 'despegue',
-    resave: false,
-    saveUninitialized: true,
-}));
+app.use(
+    cookieSession({
+        maxAge: 23 * 60 * 60 * 1000,
+        keys: ["despegue"],
+    })
+);
 
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(morgan("dev"));
+app.use(bodyParser.json({ limit: "50mb" }));
+// app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 
+// app.use(session({
+//     secret: 'despegue',
+//     resave: false,
+//     saveUninitialized: true,
+// }));
+
+// app.use(morgan("dev"));
+
+passport.use(
+    new GoogleStrategy({
+        clientID: "830751722617-598cdi3hqopnfv2jr0ro0k2umf3u02ie.apps.googleusercontent.com",
+        clientSecret: "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",
+        callbackURL: "/auth/google/redirect",
+    },
+    function(accessToken, refreshToken, profile, cb){
+        return cb(null , profile)
+    })
+);
+
+passport.serializeUser((user, done) => {
+    done(null, user)
+})
+
+passport.deserializeUser((user, done) => {
+    done(null, user)
+})
+
+app.get('/auth/google', passport.authenticate('google',{
+    scope:['email', 'profile'],
+    prompt: 'select_account'
+}))
+
+app.get('/auth/google/redirect', passport.authenticate('google'), function(req,res){
+    res.send(req.user)
+})
+ 
+
+app.get('/auth/logout', (req, res) => {
+    req.logout()
+    req.session = null
+    res.send(req.user)
+})
 
 // app.use(express.static(__dirname + '/../dist'))
 
@@ -64,13 +106,6 @@ app.use(morgan("dev"));
 //         maxAge: 24 * 60 * 60 * 100,
 //     })
 // );
-
-
-
-
-
-
-
 
 // app.use(
 //   cors({
@@ -84,8 +119,6 @@ app.use(morgan("dev"));
 //     saveUninitialized: false,
 //   })
 // );
-
-
 
 // const whitelist = [
 //     "http://localhost:3000",

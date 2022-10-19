@@ -38,6 +38,8 @@ router.get(
   passport.authenticate("google", { failureRedirect: "/login/failed" }), 
   (req, res) => {
     console.log('red');
+    console.log(req);
+    res.send(req)
     }
 )
 
