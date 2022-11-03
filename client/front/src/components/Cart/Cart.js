@@ -152,7 +152,15 @@ export default function Cart() {
         }
         }
     }, [dispatch, selectedFlight, asistant])
+
+    function checkCart(e){
+        if(cart && cart.length === 0 ) return true
+        if(cartRespaldo && cartRespaldo.length === 0 ) return true
+        return false
+    }
+
     const handleClick = async (e) => {
+
         
         if (tripType === 'roundtrip' && cart.length === 2) {
             setBackToSearch('Falta un vuelo. Por favor vuelva a buscar el pasaje que falta.')
@@ -165,6 +173,8 @@ export default function Cart() {
         localStorage.setItem('callbackUrl', window.location.pathname)
 
         //validaciones usuario
+        if(cart && cart.length === 0 ) return swal('Carrito de compras vacío, vuelva a hacer su búsqueda.', '', 'error')
+        if(cartRespaldo && cartRespaldo.length === 0 ) return swal('Carrito de compras vacío, vuelva a hacer su búsqueda.', '', 'error')
         if(!user) return alerts.notLogedForPurchase(loginWithRedirect)
         // else if(user.email === "") return alerts.noEmail(history)
         // else if(!user.verify) return alerts.notVerify()
@@ -213,7 +223,7 @@ export default function Cart() {
             <div className='d-flex justify-content-center'>
 
             {/* { cartRespaldo === undefined || cartRespaldo === null ? '' : */}
-                { cartRespaldo !== null  ? <div className='cart-title-cart'> <h1 className=''>CARRITO DE COMPRAS</h1> </div> : <div className='cart-title-cart-vacio'> <h1 className=''>CARRITO VACÍO</h1> </div>  }
+                <div className='cart-title-cart'> <h1 className=''>CARRITO DE COMPRAS</h1> </div>
             </div>
             
             <div className='d-flex justify-content-center'>
@@ -358,11 +368,12 @@ export default function Cart() {
                                 </div> : ''}
                             </div>
 
-                            :
+                            : null }
+
                             <div className='d-flex justify-content-center mt-5'>
-                            <button className='btn-cart-comprar' onClick={handleClick}>Comprar</button>
+                            <button className='btn-cart-comprar' hidden={checkCart()} onClick={handleClick}>Comprar</button>
                             </div>
-            }
+            
 
         </div>
     )
