@@ -166,7 +166,7 @@ export default function Cart() {
 
         //validaciones usuario
         if(!user) return alerts.notLogedForPurchase(loginWithRedirect)
-        else if(user.email === "") return alerts.noEmail(history)
+        // else if(user.email === "") return alerts.noEmail(history)
         // else if(!user.verify) return alerts.notVerify()
         else {
             await dispatch(getPayment(prueba))
@@ -207,14 +207,13 @@ export default function Cart() {
     let cartSinAsistenciasRespaldo = cartRespaldo ? cartRespaldo.filter((e) => e.asistant === undefined) : null
     // console.log('cartSinAsis', cartSinAsistencias)
     // console.log('cartsinasisRes', cartSinAsistenciasRespaldo)
-    console.log(cartSinAsistenciasRespaldo.length)
-    console.log(cartRespaldo.length)
+    
     return (
         <div className='cart-container'>
             <div className='d-flex justify-content-center'>
 
             {/* { cartRespaldo === undefined || cartRespaldo === null ? '' : */}
-                { cartRespaldo.length !== 0  ? <div className='cart-title-cart'> <h1 className=''>CARRITO DE COMPRAS</h1> </div> : <div className='cart-title-cart-vacio'> <h1 className=''>CARRITO VACÍO</h1> </div>  }
+                { cartRespaldo !== null  ? <div className='cart-title-cart'> <h1 className=''>CARRITO DE COMPRAS</h1> </div> : <div className='cart-title-cart-vacio'> <h1 className=''>CARRITO VACÍO</h1> </div>  }
             </div>
             
             <div className='d-flex justify-content-center'>
