@@ -82,8 +82,8 @@ export default function Cart() {
             items,
             notification_url: "https://www.your-site.com/ipn",
             back_urls: {
-                failure: process.env.REACT_APP_VERCEL_URL_FAILURE || "http://localhost:3000/failure",
-                success: process.env.REACT_APP_VERCEL_URL_SUCCESS || "http://localhost:3000/success",
+                failure: "https://despegue.vercel.app/failure",
+                success: "https://despegue.vercel.app/success",
             },
             "purpose": "wallet_purchase",
             "payment_methods": {
@@ -173,8 +173,6 @@ export default function Cart() {
         localStorage.setItem('callbackUrl', window.location.pathname)
 
         //validaciones usuario
-        if(cart && cart.length === 0 ) return swal('Carrito de compras vacío, vuelva a hacer su búsqueda.', '', 'error')
-        if(cartRespaldo && cartRespaldo.length === 0 ) return swal('Carrito de compras vacío, vuelva a hacer su búsqueda.', '', 'error')
         if(!user) return alerts.notLogedForPurchase(loginWithRedirect)
         // else if(user.email === "") return alerts.noEmail(history)
         // else if(!user.verify) return alerts.notVerify()
@@ -371,7 +369,7 @@ export default function Cart() {
                             : null }
 
                             <div className='d-flex justify-content-center mt-5'>
-                            <button className='btn-cart-comprar' hidden={checkCart()} onClick={handleClick}>Comprar</button>
+                            <button className='btn-cart-comprar' onClick={handleClick}>Comprar</button>
                             </div>
             
 
