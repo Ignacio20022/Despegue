@@ -1,6 +1,6 @@
 const axios = require('axios');
 require("dotenv").config()
-const API_KEY = "6363230fe750be20e3895e90"
+const API_KEY = "637d817be277bdbf7ea82848"
 
 async function getFlightsOneWay({ departurePlace, arrivalPlace, departureDate, returningDate, adults, childern, infants, cabinClass, currency }) {
     const data = await axios

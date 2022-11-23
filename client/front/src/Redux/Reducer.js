@@ -5,6 +5,8 @@ import { GET_FLIGHTS,GET_RATING , FILTER_FLIGHTS, FILTER_FLIGHT_BY_ID, CLEAR_FLI
 const initialState = {
     allFlights: [],
     flights: [],
+    areThereFlights:true,
+    filteredFlights:[],
     // allFlights: roundTripExample,
     // flights: roundTripExample,
     // allFlights: oneWayTripExample,
@@ -39,7 +41,8 @@ export default function reducer(state = initialState, action) {
                 // flights: oneWayTripExample,
                 // allFlights: oneWayTripExample,
                 flights: action.payload,
-                allFlights: action.payload
+                allFlights: action.payload,
+                areThereFlights: true
             };
         case CLEAR_FLIGHTS:
             return {
@@ -130,10 +133,16 @@ export default function reducer(state = initialState, action) {
                     firstFlights: filteringFlights
                 }
             }
-            return {
+            if(filteringFlights.length){
+                return {
+                    ...state,
+                    filteredFlights: filteringFlights,
+                    areThereFlights: true
+                };
+            }else return {
                 ...state,
-                flights: filteringFlights,
-            };
+                areThereFlights: false
+            }
         case FILTER_FLIGHT_BY_ID:
             let a;
             if (state.onFirstFlightRoute) {
