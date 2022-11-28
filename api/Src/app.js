@@ -54,6 +54,7 @@ app.use(cookieParser("secretcode"));
 app.use(passport.initialize());
 app.use(passport.session());
 
+//check health
 app.get('/',(req,res) => {
     res.status(200).send('live')
 })
