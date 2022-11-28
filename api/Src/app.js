@@ -53,6 +53,11 @@ app.use(
 app.use(cookieParser("secretcode"));
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.get('/',(req,res) => {
+    res.status(200).send('live')
+})
+
 app.use("/", index);
 
 app.use((err, req, res, next) => {
