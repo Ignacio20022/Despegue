@@ -9,7 +9,7 @@ import { Auth0Provider } from "@auth0/auth0-react";
 import dotenv from "dotenv";
 dotenv.config();
 
-axios.defaults.baseURL = "https://despegue.herokuapp.com";
+axios.defaults.baseURL = "https://despegue-production.up.railway.app";
 
 ReactDOM.render(
     <Provider store={store}>
