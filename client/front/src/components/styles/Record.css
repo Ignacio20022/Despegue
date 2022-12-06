@@ -1,0 +1,15 @@
+#record-card{
+    background-image: url('../../Images/historialBusqueda.jpg');
+    background-size: cover;
+    /* margin-right: 10px; */
+    width: 100%;
+    min-height: 250px;
+    margin: 0px 5px;
+    
+}
+.Record-ContainerGeneral{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}

@@ -18,13 +18,34 @@ passport.use(
     {
       clientID: GOOGLE_CLIENT_ID,
       clientSecret: GOOGLE_CLIENT_SECRET,
-      callbackURL: "https://despegue.herokuapp.com/auth/google/callback",
-      scope: ['email', 'profile'],
-      state: true
+      callbackURL: "/auth/google/callback",
     },
-    (token, tokenSecret, profile, done) => {
-        console.log(token, tokenSecret, profile, done);
-        done(null, profile)
+    function (accessToken, refreshToken, profile, done) {
+      // Busco en la DB si el usuario existe
+      User.findOne({ googleId: profile.id }).then((resp) => {
+        if (resp) {
+       
+          done(null, resp);
+        } else {
+          // Si no existe lo agrego a la DB
+          new User({
+            name: profile.displayName,
+            firstName: profile.name.givenName,
+            lastname: profile.name.familyName,
+            photo: profile.photos[0].value,
+            googleId: profile.id,
+            password: "1",
+            email: profile.emails[0].value,
+            dni: '',
+            phone: '',
+            birthDate: ''
+          })
+            .save()
+            .then((newUser) => {
+              done(null, newUser);
+            });
+        }
+      });
     }
   )
 );

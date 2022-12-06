@@ -12,11 +12,14 @@
 .MiPerfil-containerInfoPrincipal{
     display: flex; 
     justify-content: center;
+    margin-top: 50px;
+    /* align-items: center; */
 }
 .MiPerfil-ContainerDatos{
     width: 370px;
-    height: 470px;
+    /* height: 470px; */
     /* border: solid 1px black; */
+    margin-right: 30px;
 }
 .MiPerfil-containerFoto{
     max-width: 370px;
@@ -59,4 +62,67 @@
 }
 .MiPerfil-ChangeBoxActive{
     color: #3700ff;
+}
+.MiPerfil-Ofertas{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0px;
+}
+.MiPerfil-Ofertas h2{
+    font-size: 20px;
+    margin-right: 10px;
+}
+.MiPerfil-Ofertas button{
+    border-radius: 20px;
+    padding: 5px 10px;
+    margin: 0px 2px;
+    border: 0;
+    font-weight: bold;
+    border: solid 1px rgba(0, 0, 0, 0.164);
+    transition: all 0.3s;
+}
+.MiPerfil-DesSub:hover{
+    background-color: #ffffff;
+}
+.MiPerfil-Sub{
+    background-color: #ff7b00;
+    color: #ffffff;
+}
+.MiPerfil-Sub:hover{
+    background-color: #fa8c25;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.205);
+}
+.MiPerfil-BotonCancelar button{
+ margin: 10px 5px   
+}
+.MiPerfil-PositionFoto{
+    position: relative;
+}
+.MiPerfil-ChangeFotoContainer{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    cursor: pointer;
+}
+.MiPerfil-ChangeFoto{
+    border: 0;
+    background-color: #fafafa;
+    border-radius: 30px;
+}
+.MiPerfil-ChangeFotoDesplegable form{
+    padding: 20px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+.MiPerfil-inputFoto{
+    border: 20px;
+}
+.MiPerfil-ChangeButtonFoto{
+    margin-left: 10px;
+    border: 0;
+    background-color: #270570;
+    color: #e2e2e2;
+    border-radius: 5px;
 }

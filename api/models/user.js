@@ -7,53 +7,69 @@ const User = mongoose.Schema({
     required: false,
   },
 
-  firstName:{
+  firstName: {
     type: String,
     required: true,
   },
 
-  lastname:{
-      type: String,
-      required: false
+  lastName: {
+    type: String,
+    required: false,
   },
 
-  dni:{
+  dni: {
     type: String,
-    required: false
+    required: false,
   },
 
-  phone:{
+  phone: {
     type: String,
-    required: false
+    required: false,
   },
 
-  birthDate:{
+  birthDate: {
     type: String,
-    required: false
+    required: false,
   },
 
-  photo:{
+  photo: {
     type: String,
-    required: false
+    required: false,
   },
+
 
   // age:{
   //     type: Number,
   //     required: true
   // },
 
+  banned:{
+    type: Boolean,
+    default: false,
+    required: true
+  },
+
+  membership: {
+    type: Boolean,
+    default: false,
+    required: true
+  },
+
+
   password: {
     type: String,
+    default: '1',
     required: true,
   },
 
   purchaseHistory: {
-    type: mongoose.Schema.Types.ObjectId,ref:'History'
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "History",
   },
 
   email: {
     type: String,
-    required: true,
+    required: false,
     unique: true,
   },
   active: {
@@ -72,12 +88,17 @@ const User = mongoose.Schema({
   //     type: Boolean,
   //     required: false
   // },
-  googleId: {
+  sub: {
     type: String,
   },
   roles: {
     type: Array,
     default: ["user"],
+  },
+  verify:{
+    type: Boolean,
+    default: false,
+    required: true
   },
 });
 User.methods.encryptPassword = async (password) => {
@@ -88,5 +109,9 @@ User.methods.encryptPassword = async (password) => {
 User.methods.matchPassword = async function (password) {
   return await bcrypt.compare(password, this.password);
 };
+
+// User.pre("findOne", function () {
+//   this.where({ active: true });
+// });
 
 module.exports = mongoose.model("User", User);

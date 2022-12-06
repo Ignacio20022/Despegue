@@ -1,19 +1,98 @@
-const { Router } = require("express");
-const User = require("../../models/user");
-const { isAuthenticate } = require("./verify-user");
-const router = Router();
+const { Router } = require("express")
+const User = require("../../models/user")
+const History = require("../../models/history")
+const router = Router()
+const mongoose = require("mongoose")
+const e = require("express")
 
-router.post("/purchaseComplete", isAuthenticate, async (req, res) => {
-  try {
-    const { _id } = req.body.user;
-    const flightsData = req.body.flight;
+router.post("/purchaseComplete", async (req, res) => {
+    try {
+        const { id } = req.body.user
+        const flight = req.body.flight
+        const infoBusqueda = req.body.info
+        const asistant = req.body.asistant
+        const oferts = req.body.oferts
+        console.log(oferts)
+        if(oferts.length){
+            const history = new History({
+                package: oferts,
+                userId: id,
+            })
+            await history.save()
+            const user = await User.find({ "_id:": id }).populate("purchaseHistory")
+            return res.status(200).send("Succesfull Saved in User History")  
+        }
+        // const extras = req.body.asistant
+        if (Array.isArray(flight)) {
+            let vuelos = flight.map((e) => {
+                return ({
+                    exit: e.arrivalAirportCode,
+                    scales: e.segments.length ? e.segments.map((e) => {
+                        return({
+                            cabin: e.cabin,
+                            arrival: e.arrivalDateTime.slice(0,10),
+                            arrivalTime: e.arrivalDateTime.slice(11,16),
+                            departure: e.departureDateTime.slice(0,10),
+                            departureTime: e.departureDateTime.slice(11,16),
+                            duration: e.durationMinutes,
+                            arrivalAirport: e.arrivalAirportCode,
+                            departureAirport: e.departureAirportCode,
+                            airline: e.airlineCode
+                        })
+                    }) : [],
+                    schedule: e.departureTime + " | " + e.arrivalTime,
+                    destination: e.departureAirportCode,
+                    type: e.cabinClass,
+                    price: e.price,
+                    flightId: e.id,
+                    Info: infoBusqueda,
+                    asistant: asistant
+                })
+            })
+        
+            const history = new History({
+                package: vuelos,
+                userId: id
+            })
+            await history.save()
+            const user = await User.find({ "_id:": id }).populate("purchaseHistory")
+            res.status(200).send("Succesfull Saved in User History")
+        }else{
+            let vuelos = [{
+                exit: flight.arrivalAirportCode,
+                scales: flight.segments.length ? flight.segments.map((e) => {
+                        return({
+                            cabin: e.cabin,
+                            arrival: e.arrivalDateTime.slice(0,10),
+                            arrivalTime: e.arrivalDateTime.slice(11,16),
+                            departure: e.departureDateTime.slice(0,10),
+                            departureTime: e.departureDateTime.slice(11,16),
+                            duration: e.durationMinutes,
+                            arrivalAirport: e.arrivalAirportCode,
+                            departureAirport: e.departureAirportCode,
+                            airline: e.airlineCode
+                        })
+                    }) : [],
+                schedule: flight.departureTime + " | " + flight.arrivalTime,
+                destination: flight.departureAirportCode,
+                type: flight.cabinClass,
+                price: flight.price,
+                flightId: flight.id,
+                Info: infoBusqueda,
+                asistant: asistant
+            }]
 
-    const user = await User.findById(_id);
-    user.historyPurchase.push(req.body.flight);
-    await user.save();
-  } catch (err) {
-    console.log(err);
-  }
-});
+            const history = new History({
+                package: vuelos,
+                userId: id
+            })
+            await history.save()
+            const user = await User.find({ "_id:": id }).populate("purchaseHistory")
+            res.status(200).send("Succesfull Saved in User History")
+        }
+    } catch (err) { console.log(err) }
+})
+
+
 
 module.exports = router;
