@@ -28,13 +28,6 @@ app.use(morgan("dev"));
 app.use(cookieParser("secretcode"));
 app.use(passport.initialize());
 app.use(passport.session());
-// app.use(
-//   cors({
-//     origin: "*", // <-- location of the react app were connecting to
-//     methods: "GET,POST,PUT,DELETE",
-//     credentials: true,
-//   })
-// );
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*'); // update to match the domain you will make the request from

@@ -2,11 +2,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // components & functions
-import Filter from "../Filter/Filter.js";
+import Filter from "../Filter/Filter";
 import Paginado from "../Paginado/Paginado";
 import Card from '../Card/Card'
-import Loader from "../Loader/Loader.js";
-import { addFlightToCart, getFlights, getRoundTripSF, onSecondFlightRoute } from "../../Redux/Actions.js";
+import Loader from "../Loader/Loader";
+import { addFlightToCart, getFlights, getRoundTripSF, onSecondFlightRoute } from "../../Redux/Actions";
 // styles
 import "../styles/Flights.css";
 

@@ -2,11 +2,9 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import '../Ofertas/Ofertas.css'
 import { useHistory } from "react-router-dom";
-import {notLogedForPurchase} from '../../utils/alerts.js'
+import {notLogedForPurchase} from '../../utils/alerts'
 import { useAuth0 } from "@auth0/auth0-react";
 import { getPayment } from "../../Redux/Actions";
-import dotenv from "dotenv";
-dotenv.config();
 
 export default function OfertasCard({oferts}){
     const dispatch = useDispatch()
@@ -31,8 +29,8 @@ export default function OfertasCard({oferts}){
             items,
             notification_url: "https://www.your-site.com/ipn",
             back_urls: {
-                failure: "https://despegue.vercel.app/failure",
-                success: "https://despegue.vercel.app/success" ,
+                failure: import.meta.env.VITE_VERCEL_FAILURE || "http://localhost:3000/failure",
+                success: import.meta.env.VITE_VERCEL_SUCCESS || "http://localhost:3000/success",
             },
             "purpose": "wallet_purchase",
             "payment_methods": {

@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, Route } from "react-router-dom";
-import { addUserRole, listUsers } from "../../Redux/Actions";
 import Admin from "../Admin/Admin";
 
 

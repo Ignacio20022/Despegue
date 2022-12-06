@@ -2,16 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import swal from 'sweetalert'
 import { Link, useHistory } from 'react-router-dom';
-import { addFlightToCart, clearCart, clearFlightDetail, clearFlights, getFlights, getPayment, getPaymentInfo } from '../../Redux/Actions';
+import { addFlightToCart, clearCart, clearFlightDetail, clearFlights, getFlights, getPayment } from '../../Redux/Actions';
 import Card from '../Card/Card';
-import Loader from "../Loader/Loader.js";
+import Loader from "../Loader/Loader";
 import AsistCard from '../Asistencias/AsistCart';
 import './Cart.css'
 import * as alerts from '../../utils/alerts'
-import dotenv from "dotenv";
 // import _ from 'lodash'
 import { useAuth0 } from '@auth0/auth0-react';
-dotenv.config();
 
 
 
@@ -82,8 +80,8 @@ export default function Cart() {
             items,
             notification_url: "https://www.your-site.com/ipn",
             back_urls: {
-                failure: "https://despegue.vercel.app/failure",
-                success: "https://despegue.vercel.app/success",
+                failure: import.meta.env.VITE_VERCEL_FAILURE || "http://localhost:3000/failure",
+                success: import.meta.env.VITE_VERCEL_SUCCESS || "http://localhost:3000/success",
             },
             "purpose": "wallet_purchase",
             "payment_methods": {

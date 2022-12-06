@@ -10,8 +10,6 @@ import { succesAlert } from "../../utils/alerts";
 import UploadPhoto from "../UploadPhoto/index";
 import { useAuth0 } from "@auth0/auth0-react";
 import Loader from "../Loader/Loader";
-import dotenv from "dotenv";
-dotenv.config();
 
 export default function MiPerfil() {
   const { loginWithRedirect } = useAuth0();
