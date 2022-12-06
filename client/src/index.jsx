@@ -7,7 +7,7 @@ import { store } from "./Redux/Store";
 import axios from "axios";
 import { Auth0Provider } from "@auth0/auth0-react";
 
-axios.defaults.baseURL = import.meta.env.VITE_API_URL || "http://localhost:3001";
+axios.defaults.baseURL = import.meta.env.VITE_API_URL || "http://localhost:3001/api";
 
 ReactDOM.render(
     <Provider store={store}>

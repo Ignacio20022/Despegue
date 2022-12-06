@@ -30,7 +30,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*'); // update to match the domain you will make the request from
+    res.header('Access-Control-Allow-Origin', 'https://despegue.vercel.app'); // update to match the domain you will make the request from
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
     next();
   });
@@ -51,7 +51,7 @@ app.get('/',(req,res) => {
     res.status(200).send('live')
 })
 
-app.use("/", index);
+app.use("/api", index);
 
 app.use((err, req, res, next) => {
   // eslint-disable-line no-unused-vars
