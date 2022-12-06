@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useEffect } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 // import Card from "./components/Card/Card.js";
 import Home from "./components/Home/Home";
 import Footer from "./components/Footer/Footer";
@@ -34,6 +34,7 @@ import ChatBot from "./components/ChatBot/ChatBot";
 import UpladPhoto from "./components/UploadPhoto";
 import Rating from "./components/ratingComments/rating";
 import Filter from "./components/Filter/Filter";
+import NotFound from "./components/NotFound/NotFound";
 
 function App() {
   const dispatch = useDispatch();
@@ -65,38 +66,41 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Route path="/" component={ChatBot} />
-        <Route path={"/"} render={() => <NavBar />} />
-        <Route exact path="/" component={Home} />
-        {/* <Route exact path="/login" render={() => <Login />} /> */}
-        <Route exact path="/ofertas" render={() => <OfertasContainer />} />
-        <Route path="/user" render={() => <MiPerfil />} />
-        {/* <Route exact path={"/register"} render={() => <Register />} /> */}
-        <Route exact path="/flights" component={Flights} />
-        <PrivateRoute exact path="/admin" component={Admin} />
-        <Route
-          exact
-          path="/flights/roundtrip/firstFlight"
-          component={RoundtripFF}
-        />
-        <Route
-          exact
-          path="/flights/roundtrip/secondFlight"
-          component={RoundtripSF}
-        />
-        <Route exact path="/flights/roundtrip/cart" component={Cart} />
-        <Route exact path="/flights/flightDetail/:id" component={CardDetail} />
-        <Route exact path="/success" component={Success} />
-        <Route exact path="/failure" component={Failure} />
-        <Route path="/" component={Footer} />
-        <Route path="/purchase" render={() => <Checkout />} />
-        <Route path="/help" render={() => <Help />} />
-        <Route path={"/asistencias"} render={() => <AsistenciasCard />} />
-        <Route path='/uploadPhoto' component={UpladPhoto}/>
-        <Route exact path='/callback' component={Auth0Callback} />
-        <Route exact path={"/flights/roundtrip/asistant"} component={CompraAsistencias} />
-        <Route path={"/feedBack"} component={Rating}/>
-        <Route path={"/sliders"} component={Filter}/>
+            <Route path="/" component={ChatBot} />
+            <Route path={"/"} render={() => <NavBar />} />
+            <Route path="/" component={Footer} />
+        <Switch>
+            <Route exact path="/" component={Home} />
+            {/* <Route exact path="/login" render={() => <Login />} /> */}
+            <Route exact path="/ofertas" render={() => <OfertasContainer />} />
+            <Route exact path="/user" render={() => <MiPerfil />} />
+            {/* <Route exact path={"/register"} render={() => <Register />} /> */}
+            <Route exact path="/flights" component={Flights} />
+            <PrivateRoute exact path="/admin" component={Admin} />
+            <Route
+            exact
+            path="/flights/roundtrip/firstFlight"
+            component={RoundtripFF}
+            />
+            <Route
+            exact
+            path="/flights/roundtrip/secondFlight"
+            component={RoundtripSF}
+            />
+            <Route exact path="/flights/roundtrip/cart" component={Cart} />
+            <Route exact path="/flights/flightDetail/:id" component={CardDetail} />
+            <Route exact path="/success" component={Success} />
+            <Route exact path="/failure" component={Failure} />
+            <Route exact path="/purchase" render={() => <Checkout />} />
+            <Route exact path="/help" render={() => <Help />} />
+            <Route exact path={"/asistencias"} render={() => <AsistenciasCard />} />
+            <Route exact path='/uploadPhoto' component={UpladPhoto}/>
+            <Route exact path='/callback' component={Auth0Callback} />
+            <Route exact path={"/flights/roundtrip/asistant"} component={CompraAsistencias} />
+            <Route exact path={"/feedBack"} component={Rating}/>
+            <Route exact path={"/sliders"} component={Filter}/>
+            <Route path='*' component={NotFound} />
+        </Switch>
       </BrowserRouter>
     </div>
   );
