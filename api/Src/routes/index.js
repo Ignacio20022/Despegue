@@ -45,8 +45,8 @@ router.use("/searchByName", searchByName);
 
 
 // History & Purchase
-const users = require("../routes/purchaseRelationship")
-const getHistory = require("../routes/historyGet")
+const users = require("./purchaseRelationship")
+const getHistory = require("./historyGet")
 router.use("/users", users)
 router.use("/users", getHistory)
 
@@ -71,7 +71,7 @@ const bucket = require('./aws-s3-bucket/index');
 router.use('/awsS3Bucket', bucket);
 
 //rating
-const rating = require("../routes/routesRating")
+const rating = require("./routesRating")
 router.use("/rating", rating)
 
 

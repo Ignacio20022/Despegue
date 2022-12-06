@@ -2,7 +2,7 @@ const { Router } = require("express");
 const router = Router();
 const mongoose = require("mongoose");
 const User = require("../../models/user");
-const infoTransporter = require("../routes/utils/mailer");
+const infoTransporter = require("./utils/mailer");
 const fs = require("fs");
 
 router.put("/membership", async (req, res) => {
