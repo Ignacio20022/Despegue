@@ -9,7 +9,7 @@ const cors = require("cors");
 const passport = require("passport");
 require("dotenv").config();
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
-const { URI, USER, PASSWORD } = process.env;
+const { URI, USER, PASSWORD, CLIENT_URL } = process.env;
 
 const app = express();
 require("./routes/login/passportConfig");
@@ -30,8 +30,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'https://despegue.vercel.app'); // update to match the domain you will make the request from
+    res.header('Access-Control-Allow-Origin', CLIENT_URL || 'http://localhost:3000'); // update to match the domain you will make the request from
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+    res.header("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With")
     next();
   });
 
