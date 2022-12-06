@@ -2,6 +2,7 @@ const User = require("../../../models/user");
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcrypt");
 const passport = require("passport");
+const { token } = require("morgan");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const FacebookStrategy = require("passport-facebook").Strategy;
 
@@ -85,7 +86,6 @@ passport.use(
 );
 
 passport.serializeUser((user, done) => {
-  console.log(user);
   done(null, user);
 });
 

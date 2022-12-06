@@ -8,6 +8,7 @@ const session = require("express-session");
 const cors = require("cors");
 const passport = require("passport");
 require("dotenv").config();
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const { URI, USER, PASSWORD } = process.env;
 
 const app = express();
@@ -37,8 +38,6 @@ app.use(passport.session());
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*'); // update to match the domain you will make the request from
-    res.header('Access-Control-Allow-Credentials', 'true');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
     next();
   });
