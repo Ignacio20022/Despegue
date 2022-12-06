@@ -1,7 +1,5 @@
 import swal2 from "sweetalert2";
 import axios from "axios";
-import dotenv from "dotenv";
-dotenv.config();
 
 export const activeAcc = (log) => {
   swal2
@@ -18,7 +16,7 @@ export const activeAcc = (log) => {
         window.open('mailto:despegue.info@gmail.com', '_blank')
       } else if (result.isDenied) {
         log({
-          returnTo: "https://despegue.vercel.app",
+          returnTo: import.meta.env.VITE_VERCEL || "http://localhost:3000",
         }); //return to localhost/activar cuenta
       }
     });
@@ -38,7 +36,7 @@ export const bannedAcc = (log) => {
     .then((result) => {
       if (result.isConfirmed) {
         log({
-          returnTo: "https://despegue.vercel.app",
+          returnTo: import.meta.env.VITE_VERLCE || "http://localhost:3000",
         }); //return to localhost/activar cuenta
         window.localStorage.removeItem("user");
       }
@@ -93,7 +91,7 @@ export const notLogedForPurchase = (loginWithRedirect) => {
         denyButtonText: "Cerrar"
     })
     .then((result) => {
-        if(result.isConfirmed) loginWithRedirect({redirectUri: "https://despegue.vercel.app/callback"})
+        if(result.isConfirmed) loginWithRedirect({redirectUri: import.meta.env.VITE_VERCEL_CALLBACK || "http://localhost:3000/callback"})
     })
 }
 
@@ -154,6 +152,6 @@ export const noLogViajes = (loginWithRedirect) => {
     denyButtonText: "Cerrar"
   })
   .then((result) => {
-    if(result.isConfirmed) loginWithRedirect({redirectUri: "https://despegue.vercel.app/callback"})
+    if(result.isConfirmed) loginWithRedirect({redirectUri: import.meta.env.VITE_VERCEL_CALLBACK || "http://localhost:3000/callback" })
 })
 }

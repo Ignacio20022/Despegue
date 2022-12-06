@@ -5,10 +5,6 @@ import { FaStar } from "react-icons/fa"
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useHistory } from 'react-router-dom';
-import dotenv from "dotenv";
-dotenv.config();
-
-
 
 export default function RatingForm() {
     const stars = Array(5).fill(0)
@@ -87,7 +83,7 @@ export default function RatingForm() {
                 }}
                 onSubmit={(inputs, { resetForm }) => {
                     if (!user) {
-                        loginWithRedirect({ redirectUri: "https://despegue.vercel.app/callback" })
+                        loginWithRedirect({ redirectUri: import.meta.env.VITE_VERCEL_CALLBACK || "http://localhost:3000/callback" })
                     }
                     postInfo(inputs.description)
                     resetForm()

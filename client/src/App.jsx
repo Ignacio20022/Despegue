@@ -8,8 +8,8 @@ import Flights from "./components/Flights/Flights";
 import FlightsSearch from "./components/FlightsSearch/FlightsSearch";
 import NavBar from "./components/NavBar/NavBar";
 import Checkout from "./components/Checkout/Checkout";
-import Login from "./components/Login/Login";
-import Register from "./components/Register/Register";
+// import Login from "./components/Login/Login";
+// import Register from "./components/Register/Register";
 import CardDetail from "./components/CardDetail/cardDetail";
 import OfertasContainer from "./components/Ofertas/OfertasContainer";
 // import LogInButton from "./components/Login auth0/LogInAuth0";
@@ -68,10 +68,10 @@ function App() {
         <Route path="/" component={ChatBot} />
         <Route path={"/"} render={() => <NavBar />} />
         <Route exact path="/" component={Home} />
-        <Route exact path="/login" render={() => <Login />} />
+        {/* <Route exact path="/login" render={() => <Login />} /> */}
         <Route exact path="/ofertas" render={() => <OfertasContainer />} />
         <Route path="/user" render={() => <MiPerfil />} />
-        <Route exact path={"/register"} render={() => <Register />} />
+        {/* <Route exact path={"/register"} render={() => <Register />} /> */}
         <Route exact path="/flights" component={Flights} />
         <PrivateRoute exact path="/admin" component={Admin} />
         <Route

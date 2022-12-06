@@ -15,8 +15,6 @@ import React from "react";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import Swal from "sweetalert2";
 import * as alerts from '../../utils/alerts'
-import dotenv from "dotenv";
-dotenv.config();
 
 export default function NavBar() {
     const { loginWithRedirect, logout } = useAuth0();
@@ -48,7 +46,7 @@ const closeSession = () => {
         denyButtonText: `No`,
     }).then((result) => {
         if (result.isConfirmed) {
-            logout({ returnTo: "https://despegue.vercel.app" });
+            logout({ returnTo: import.meta.env.VITE_VERCEL || "http://localhost:3000" });
             window.localStorage.removeItem("user");
             window.localStorage.removeItem("sinLog");
             window.localStorage.removeItem("init_point");
@@ -64,7 +62,7 @@ const closeSession = () => {
 
 const login = () => {
     localStorage.setItem('callbackUrl', window.location.pathname)
-    loginWithRedirect({redirectUri: process.env.REACT_APP_CALLBACK || "http://localhost:3000/callback"})
+    loginWithRedirect({redirectUri: import.meta.env.VITE_VERCEL_CALLBACK || "http://localhost:3000/callback"})
 }
 
   const handleViajes = (e) => {

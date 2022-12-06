@@ -3,13 +3,11 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { Provider } from "react-redux";
-import { store } from "./Redux/Store.js";
+import { store } from "./Redux/Store";
 import axios from "axios";
 import { Auth0Provider } from "@auth0/auth0-react";
-import dotenv from "dotenv";
-dotenv.config();
 
-axios.defaults.baseURL = "https://despegue-production.up.railway.app";
+axios.defaults.baseURL = import.meta.env.VITE_API_URL || "http://localhost:3001";
 
 ReactDOM.render(
     <Provider store={store}>

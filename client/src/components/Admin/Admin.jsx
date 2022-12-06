@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 // import MuiDataTable from 'mui-datatables'
-import MaterialTable from 'material-table'
+import MaterialTable from '@material-table/core'
 import { useDispatch, useSelector } from "react-redux";
 import { deleteOffer, listHistory, listOffers, listUsers, offersCreate, reactivateOffer, updateOffer, updateUser } from "../../Redux/Actions";
 import DeleteIcon from '@mui/icons-material/Delete';

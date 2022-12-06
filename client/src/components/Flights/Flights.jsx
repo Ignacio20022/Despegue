@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { useSelector } from "react-redux";
-import Filter from "../Filter/Filter.js";
+import Filter from "../Filter/Filter";
 import Paginado from "../Paginado/Paginado";
 import Card from '../Card/Card'
-import Loader from "../Loader/Loader.js";
+import Loader from "../Loader/Loader";
 import InfiniteScroll from 'react-infinite-scroll-component'
 import "../styles/Flights.css";
 import scrollgif from '../../Images/scroll-down.gif'
 import { useHistory } from "react-router-dom";
-import { getFlights } from "../../Redux/Actions.js";
+import { getFlights } from "../../Redux/Actions";
 
 // se usa info de momento
 
