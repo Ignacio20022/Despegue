@@ -4,9 +4,9 @@ import { useDispatch } from "react-redux";
 import { BrowserRouter, Route } from "react-router-dom";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
+import { storeUserInfo } from "./Redux/Actions";
 import Loader from "./components/Loader/Loader";
-// const Auth0Callback = lazy(() => import("./auth0callback"));
-import Auth0Callback from './auth0callback'
+const Auth0Callback = lazy(() => import("./auth0callback"));
 // import Card from "./components/Card/Card.js";
 const Home = lazy(() => import("./components/Home/Home"));
 const Footer = lazy(() => import("./components/Footer/Footer"));
@@ -26,7 +26,6 @@ const Cart = lazy(() => import("./components/Cart/Cart"));
 const Help = lazy(() => import("./components/Help/Help"));
 const AsistenciasCard = lazy(() => import("./components/Asistencias/AsistenciasCard"));
 const CompraAsistencias = lazy(() => import("./components/Asistencias/CompraAsistencias"));
-const storeUserInfo = lazy(() => import("./Redux/Actions").then((module) => ({ default: module.storeUserInfo })))
 const Success = lazy(() => import("./components/Compras/Success"));
 const Failure = lazy(() => import("./components/Compras/Failure"));
 const activeAcc = lazy(() => import("./utils/alerts").then((module) => ({ default: module.activeAcc })))
