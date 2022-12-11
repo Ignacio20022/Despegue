@@ -29,8 +29,11 @@ app.use(cookieParser("secretcode"));
 app.use(passport.initialize());
 app.use(passport.session());
 
+const allowedDomains = ['http://127.0.0.1', 'http://localhost:3000']
+
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', CLIENT_URL || 'http://localhost:3000'); // update to match the domain you will make the request from
+    const origin = req.header('origin')
+    if(allowedDomains.indexOf(origin) > -1) res.header('Access-Control-Allow-Origin', origin); // update to match the domain you will make the request from
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
     res.header("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With")
     next();
