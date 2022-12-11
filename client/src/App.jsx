@@ -28,6 +28,7 @@ const activeAcc = lazy(() => import("./utils/alerts").then((module) => ({ defaul
 const bannedAcc = lazy(() => import("./utils/alerts").then((module) => ({ default: module.bannedAcc })))
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
+import Loader from "./components/Loader/Loader";
 const Auth0Callback = lazy(() => import("./auth0callback"));
 const Admin = lazy(() => import("./components/Admin/Admin"));
 const PrivateRoute = lazy(() => import("./components/PrivateRoute/PrivateRoute"));
@@ -66,7 +67,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Suspense fallback={ <div>Loading...</div> }>
+        <Suspense fallback={ <Loader/> }>
             <Route path="/" component={ChatBot} />
             <Route path={"/"} render={() => <NavBar />} />
             <Route exact path="/" component={Home} />
