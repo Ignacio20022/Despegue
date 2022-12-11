@@ -1,15 +1,12 @@
-import React from "react";
+import React, { useEffect, lazy } from "react";
 import ReactDOM from "react-dom";
 import style from "./Checkout.module.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import swal from "sweetalert";
 import { Redirect, useHistory } from "react-router-dom";
 import mp from "../../Images/mercadopago.png";
-import { useDispatch } from "react-redux";
 import { sendMailCompra } from "../../Redux/Actions";
 import axios from "axios";
-import { useEffect } from "react";
-import Loader from "../Loader/Loader";
 import _ from 'lodash'
 const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
 
