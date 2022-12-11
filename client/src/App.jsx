@@ -29,7 +29,8 @@ const bannedAcc = lazy(() => import("./utils/alerts").then((module) => ({ defaul
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 import Loader from "./components/Loader/Loader";
-const Auth0Callback = lazy(() => import("./auth0callback"));
+// const Auth0Callback = lazy(() => import("./auth0callback"));
+import Auth0Callback from './auth0callback'
 const Admin = lazy(() => import("./components/Admin/Admin"));
 const PrivateRoute = lazy(() => import("./components/PrivateRoute/PrivateRoute"));
 const ChatBot = lazy(() => import("./components/ChatBot/ChatBot"));
