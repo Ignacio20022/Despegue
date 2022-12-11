@@ -10,15 +10,11 @@ import Colombia from '../../Images/Promociones/4.png'
 import Chile from '../../Images/Promociones/5.png'
 import Portada from '../../Images/Promociones/Portada.png'
 import Pago from '../../Images/Promociones/Pago.png'
-import { Link } from "react-router-dom";
 import '../Home/Promociones.css'
-import Record from "../Record/Record";
-import Logo from "../../Images/Logo.png";
+// import Record from "../Record/Record";
+// import Logo from "../../Images/Logo.png";
 import CardPreguntas from "./CardPreguntas";
 import { clearFlights } from "../../Redux/Actions";
-import { clearCart } from "../../Redux/Actions";
-import { clearAirportsName } from "../../Redux/Actions";
-import { getFlights } from "../../Redux/Actions";
 import { succesAlert } from "../../utils/alerts";
 // se usa info de momento
 
