@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, Link } from "react-router-dom";
-import swal from 'sweetalert'
 import FlightsSearch from "../FlightsSearch/FlightsSearch";
-import { useDispatch, useSelector } from "react-redux";
-import Mexico from '../../Images/Promociones/1.png'
-import Brasil from '../../Images/Promociones/2.png'
-import Italia from '../../Images/Promociones/3.png'
-import Colombia from '../../Images/Promociones/4.png'
-import Chile from '../../Images/Promociones/5.png'
-import Portada from '../../Images/Promociones/Portada.png'
-import Pago from '../../Images/Promociones/Pago.png'
+import { useDispatch } from "react-redux";
+import Mexico from '../../Images/Promociones/1.webp'
+import Brasil from '../../Images/Promociones/2.webp'
+import Italia from '../../Images/Promociones/3.webp'
+import Colombia from '../../Images/Promociones/4.webp'
+import Chile from '../../Images/Promociones/5.webp'
+import Portada from '../../Images/Promociones/Portada.webp'
+import Pago from '../../Images/Promociones/Pago.webp'
 import '../Home/Promociones.css'
 // import Record from "../Record/Record";
 // import Logo from "../../Images/Logo.png";
@@ -21,46 +20,19 @@ import { succesAlert } from "../../utils/alerts";
 function Home(props) {
   const dispatch = useDispatch()
   const history = useHistory()
-  const [cancel, setCancel] = useState('')
   const [seteo, setSeteo] = useState(false)
-  let display = localStorage.getItem('display')
-  let cartRespaldo = JSON.parse(localStorage.getItem('cartRespaldo'))
-  let vuelos = undefined || null ? '' : JSON.parse(localStorage.getItem('detail'))
-  let vuelo = vuelos ? vuelos.filter((e) => e.asistant === undefined) : null
-  const busqueda = JSON.parse(localStorage.getItem('busqueda'))
 
   // useEffect(e => {
   //   dispatch(listUsers())
   // }, [dispatch])
 
   // let usersList = useSelector(state => state.listUsers)
-  let user = useSelector((state) => state.user);
-  const user2 = JSON.parse(window.localStorage.getItem("user"));
-
-  if (!user && user2) user = user2;
 
   // let userRole = usersList.length !== 0 && user ? usersList.find(e => e.email === user.email) : null
   // if (userRole) {
   //   dispatch(addUserRole(userRole))
   // }
   // console.log(userRole)
-
-  const handleClickCompra = (e) => {
-    e.preventDefault();
-    display = false
-    localStorage.setItem('display', display)
-    return history.push('/flights/roundtrip/cart')
-  }
-
-  const handleClickCancelar = async (e) => {
-    e.preventDefault();
-    display = false;
-    localStorage.setItem('display', display)
-    localStorage.removeItem('detail')
-    localStorage.removeItem('cartRespaldo')
-    await swal('Compra cancelada!', '', 'success')
-    history.push('/')
-  }
 
   function reclamo(){
     setSeteo(false)
@@ -107,7 +79,7 @@ function Home(props) {
 
   return (
     <div>
-      <FlightsSearch cancel={setCancel} />
+      <FlightsSearch />
 
       {/* Promociones */}
       <div className="Promociones-ContainerPrincipal">

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { storeUserInfo } from '../../Redux/Actions';
 
 export default function UpladPhoto() {
     const [file, setFile] = useState();

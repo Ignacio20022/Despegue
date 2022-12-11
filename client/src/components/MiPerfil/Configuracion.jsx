@@ -1,10 +1,8 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { useState } from "react";
+import React, { useState } from "react";
 import "../MiPerfil/Configuracion.css";
-import React from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import { storeUserInfo } from "../../Redux/Actions";
 import { errorAlert, succesAlert } from "../../utils/alerts";
 
 export default function Configuracion() {

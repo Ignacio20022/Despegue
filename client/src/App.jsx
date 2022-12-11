@@ -14,8 +14,8 @@ const Flights = lazy(() => import("./components/Flights/Flights"));
 // const FlightsSearch = lazy(() => import('./components/FlightsSearch/FlightsSearch'))
 const NavBar = lazy(() => import("./components/NavBar/NavBar"));
 const Checkout = lazy(() => import("./components/Checkout/Checkout"));
-const Login = lazy(() => import("./components/Login/Login"));
-const Register = lazy(() => import("./components/Register/Register"));
+// const Login = lazy(() => import("./components/Login/Login"));
+// const Register = lazy(() => import("./components/Register/Register"));
 const CardDetail = lazy(() => import("./components/CardDetail/cardDetail"));
 const OfertasContainer = lazy(() => import("./components/Ofertas/OfertasContainer"));
 // const LogInButton = lazy(() => import("./components/Login auth0/LogInAuth0"))
@@ -71,10 +71,10 @@ function App() {
             <Route path="/" component={ChatBot} />
             <Route path={"/"} render={() => <NavBar />} />
             <Route exact path="/" component={Home} />
-            <Route exact path="/login" render={() => <Login />} />
+            {/* <Route exact path="/login" render={() => <Login />} /> */}
             <Route exact path="/ofertas" render={() => <OfertasContainer />} />
             <Route path="/user" render={() => <MiPerfil />} />
-            <Route exact path={"/register"} render={() => <Register />} />
+            {/* <Route exact path={"/register"} render={() => <Register />} /> */}
             <Route exact path="/flights" component={Flights} />
             <PrivateRoute exact path="/admin" component={Admin} />
             <Route

@@ -20,4 +20,15 @@ export default defineConfig({
             env: viteConfig.env,
         })),
     ],
+    build: {
+        emptyOutDir: true,
+        rollupOptions:{            
+            output: {
+                manualChunks: {
+                    lodash: ['lodash'],
+                    material_table: ['@material-table/core']
+                }
+            }            
+        },
+    },
 });

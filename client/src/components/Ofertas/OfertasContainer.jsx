@@ -1,11 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import OfertasCard from "./Ofertas";
-import { useEffect } from "react";
 import '../Ofertas/Ofertas.css'
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { listOffers, listUsers } from "../../Redux/Actions";
-import Portada from '../../Images/Promociones/PortadaOfertas.png'
+import Portada from '../../Images/Promociones/PortadaOfertas.webp'
 
 export default function OfertasContainer(){
     const dispatch = useDispatch()
@@ -14,7 +12,6 @@ export default function OfertasContainer(){
         dispatch(listOffers())
     }, [dispatch])
 
-    const users = useSelector(state => state.listUsers);
     const offers = useSelector(state => state.offersListA);
 
     return(
