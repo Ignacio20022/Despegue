@@ -304,11 +304,6 @@ export const clearFlightDetail = () => {
     }
 }
 
-
-export const getoffers = () => {
-
-}
-
 export const deleteFlight = (id) => {
     return {
         type: DELETE_FLIGHT,
