@@ -7,7 +7,6 @@ import '../Asistencias/Asistencias.css'
 
 export default function AsistCard({ obj }) {
 
-    console.log('a', obj)
     return (
         <div className="d-flex justify-content-center">
             {obj === null ? '' : 

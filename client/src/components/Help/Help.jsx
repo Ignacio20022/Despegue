@@ -20,7 +20,7 @@ export default function Help() {
   const localUser = JSON.parse(window.localStorage.getItem("user"));
   const [user, setUser] = useState(localUser);
   const history = useHistory()
-  const { loginWithRedirect, logout } = useAuth0();
+  const { loginWithRedirect } = useAuth0();
   
   useEffect(() => {
     window.localStorage.setItem("user", JSON.stringify(user));

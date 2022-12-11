@@ -4,15 +4,13 @@ import "./ratingForm.css"
 import { FaStar } from "react-icons/fa"
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useHistory } from 'react-router-dom';
 
 export default function RatingForm() {
     const stars = Array(5).fill(0)
     const [currentValue, setCurrentValue] = useState(5)
     const [hoverValue, setHoverValue] = useState(undefined)
     const [comprobationState, setComprobationState] = useState(false)
-    const history = useHistory();
-    const { loginWithRedirect, logout } = useAuth0();
+    const { loginWithRedirect } = useAuth0();
 
 
     const user = JSON.parse(window.localStorage.getItem("user"));

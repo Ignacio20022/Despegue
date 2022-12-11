@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Link, Redirect, Route } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import "../MiPerfil/MiPerfil.css";
 import DatosPersonales from "./DatosPersonales";
 import Configuracion from "./Configuracion";
-import { useSelector } from "react-redux";
 import UserHistory from "./userHistory";
 import axios from "axios";
 import { succesAlert } from "../../utils/alerts";
-import UploadPhoto from "../UploadPhoto/index";
 import { useAuth0 } from "@auth0/auth0-react";
-import Loader from "../Loader/Loader";
 
 export default function MiPerfil() {
   const { loginWithRedirect } = useAuth0();

@@ -1,12 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { useState } from "react";
+import React, { useState } from "react";
 import "../MiPerfil/DatosPersonales.css";
-import React from "react";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 import axios from "axios";
-import { useDispatch } from "react-redux";
-import { storeUserInfo } from "../../Redux/Actions";
 import { succesAlert } from "../../utils/alerts";
 
 export default function DatosPersonales({ user, setUser }) {
@@ -107,7 +102,8 @@ export default function DatosPersonales({ user, setUser }) {
 
               // Validacion cumplenos
               if (!valores.birthDate) {
-              } else if (
+              } 
+              else if (
                 !/^(3[01]|[12][0-9]|0?[1-9])\/(1[0-2]|0?[1-9])\/(?:[0-9]{2})?[0-9]{2}$/.test(
                   valores.birthDate
                 )

@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import '../styles/Record.css'
 import { useDispatch } from "react-redux";
-import { clearCart, clearFlights, getFlights } from "../../Redux/Actions";
+import { clearFlights, getFlights } from "../../Redux/Actions";
 import { useHistory } from "react-router-dom";
 // import img from '../../Images/historialBusqueda.jpg'
 

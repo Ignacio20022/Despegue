@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import swal from 'sweetalert'
 import { Link, useHistory } from 'react-router-dom';
-import { addFlightToCart, clearCart, clearFlightDetail, clearFlights, getFlights, getPayment } from '../../Redux/Actions';
+import { addFlightToCart, clearCart, clearFlights, getFlights, getPayment } from '../../Redux/Actions';
 import Card from '../Card/Card';
 import Loader from "../Loader/Loader";
 import AsistCard from '../Asistencias/AsistCart';
@@ -39,7 +39,6 @@ export default function Cart() {
     const firstFlight = useSelector(state => state.firstFlights)
     const [backToSearch, setBackToSearch] = useState('')
     const [display, setDisplay] = useState(false)
-    const payment = useSelector((state) => state.getPayment);
     let selectedFlight = useSelector((state) => state.flightDetail);
     let cart = useSelector((state) => state.flightsCart)
     let tripType = localStorage.getItem('tripType')
@@ -150,12 +149,6 @@ export default function Cart() {
         }
         }
     }, [dispatch, selectedFlight, asistant])
-
-    function checkCart(e){
-        if(cart && cart.length === 0 ) return true
-        if(cartRespaldo && cartRespaldo.length === 0 ) return true
-        return false
-    }
 
     const handleClick = async (e) => {
 

@@ -1,4 +1,4 @@
-import React, { useEffect, lazy } from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 import style from "./Checkout.module.css";
 import { useSelector, useDispatch } from "react-redux";
@@ -7,7 +7,6 @@ import { Redirect, useHistory } from "react-router-dom";
 import mp from "../../Images/mercadopago.png";
 import { sendMailCompra } from "../../Redux/Actions";
 import axios from "axios";
-import _ from 'lodash'
 const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
 
 export default function Checkout() {
