@@ -3,13 +3,13 @@ import { useHistory, Link } from "react-router-dom";
 import swal from 'sweetalert'
 import FlightsSearch from "../FlightsSearch/FlightsSearch";
 import { useDispatch, useSelector } from "react-redux";
-import Mexico from '../../Images/Promociones/1.png'
-import Brasil from '../../Images/Promociones/2.png'
-import Italia from '../../Images/Promociones/3.png'
-import Colombia from '../../Images/Promociones/4.png'
-import Chile from '../../Images/Promociones/5.png'
-import Portada from '../../Images/Promociones/Portada.png'
-import Pago from '../../Images/Promociones/Pago.png'
+import Mexico from '../../Images/Promociones/1.webp'
+import Brasil from '../../Images/Promociones/2.webp'
+import Italia from '../../Images/Promociones/3.webp'
+import Colombia from '../../Images/Promociones/4.webp'
+import Chile from '../../Images/Promociones/5.webp'
+import Portada from '../../Images/Promociones/Portada.webp'
+import Pago from '../../Images/Promociones/Pago.webp'
 import '../Home/Promociones.css'
 // import Record from "../Record/Record";
 // import Logo from "../../Images/Logo.png";

@@ -1,6 +1,6 @@
 import "../Help/Help.css";
 import React, { useState, useEffect } from "react";
-import Portada from "../../Images/AyudaPortada.png";
+import Portada from "../../Images/AyudaPortada.webp";
 import CambioReserva from "../../Images/Ayuda/CambioReserva.png";
 import CambioVuelo from "../../Images/Ayuda/CambioVuelo.png";
 import Cancelaciones from "../../Images/Ayuda/Cancelaciones.png";

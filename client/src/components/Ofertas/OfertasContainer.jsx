@@ -5,7 +5,7 @@ import '../Ofertas/Ofertas.css'
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { listOffers, listUsers } from "../../Redux/Actions";
-import Portada from '../../Images/Promociones/PortadaOfertas.png'
+import Portada from '../../Images/Promociones/PortadaOfertas.webp'
 
 export default function OfertasContainer(){
     const dispatch = useDispatch()
