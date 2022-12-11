@@ -1,14 +1,14 @@
 import axios from "axios";
 import { lazy } from "react";
-import { deleteOffer, offersCreate, reactivateOffer, updateOffer, updateUser } from "../../Redux/Actions.jsx";
+import { deleteOffer, offersCreate, reactivateOffer, updateOffer, updateUser } from "../../Redux/Actions.js";
 import { useDispatch } from "react-redux";
+import { columns, columnsOffersA, columnsOffersD } from "./Columns"
 const MaterialTable = lazy(() => import("@material-table/core"));
 const DeleteIcon = lazy(() => import("@mui/icons-material/Delete"));
 const ReplyAllTwoToneIcon = lazy(() =>
     import("@mui/icons-material/ReplyAllTwoTone")
 );
 
-import { columns, columnsOffersA, columnsOffersD } from "./Columns";
 
 export const UserList = (props) => {
     const { users } = props;
