@@ -29,7 +29,7 @@ app.use(cookieParser("secretcode"));
 app.use(passport.initialize());
 app.use(passport.session());
 
-const allowedDomains = ['http://127.0.0.1', 'http://localhost:3000', 'https://despegue.vercel.app']
+const allowedDomains = ['http://127.0.0.1:3000', 'http://localhost:3000', 'https://despegue.vercel.app']
 
 app.use((req, res, next) => {
     const origin = req.header('origin')
